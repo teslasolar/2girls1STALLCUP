@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stallcup's List - Choose Your Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0052cc, #c41e3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #8892b0;
+            margin-bottom: 3rem;
+        }
+
+        .versions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .version-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .version-card.original {
+            border-color: #c41e3a;
+        }
+
+        .version-card.original:hover {
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+        }
+
+        .version-card.ai {
+            border-color: #00a8ff;
+        }
+
+        .version-card.ai:hover {
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.3);
+        }
+
+        .version-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .version-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .version-description {
+            color: #8892b0;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .version-link {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .original .version-link {
+            background: linear-gradient(135deg, #0052cc, #c41e3a);
+        }
+
+        .ai .version-link {
+            background: linear-gradient(135deg, #00a8ff, #00ff88);
+        }
+
+        .version-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #00ff88;
+            color: #0a0f1c;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .versions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stallcup's List</h1>
+        <p class="subtitle">Choose your preferred approach to merit-based immigration</p>
+
+        <div class="versions-grid">
+            <!-- Original Version -->
+            <div class="version-card original">
+                <div class="version-icon">🇺🇸</div>
+                <h2 class="version-title">Original Proposal</h2>
+                <p class="version-description">
+                    The traditional approach focusing on family values, honest work, clean records, and love for America. A compassionate system recognizing those who contribute to our communities.
+                </p>
+                <a href="index_original.html" class="version-link">View Original →</a>
+            </div>
+
+            <!-- AI Enhanced Version -->
+            <div class="version-card ai">
+                <div class="badge">AI Enhanced</div>
+                <div class="version-icon">🤖</div>
+                <h2 class="version-title">Konomi AI System</h2>
+                <p class="version-description">
+                    Advanced meta-analysis using artificial intelligence to calculate net societal value. Objective, scalable, and data-driven assessment for modern immigration reform.
+                </p>
+                <a href="konomi-ai-enhanced/index.html" class="version-link">Explore AI Version →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = Math.random() > 0.5 ? '#c41e3a' : '#00a8ff';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.5';
+            
+            const duration = 5000 + Math.random() * 5000;
+            particle.style.animation = `float ${duration}ms linear`;
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), duration);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                to {
+                    transform: translateY(-${window.innerHeight + 20}px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
