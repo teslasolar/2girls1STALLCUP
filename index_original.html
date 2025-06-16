@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stallcup's List - A Proposal for America</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0052cc;
+            --secondary: #c41e3a;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --gold: #ffb81c;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><rect width="100" height="20" fill="white"/><rect y="40" width="100" height="20" fill="white"/><rect y="80" width="100" height="20" fill="white"/></svg>');
+            background-size: 100px 100px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .proposal-section {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .proposal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+        .proposal-text:first-child {
+            margin-top: 0;
+        }
+
+        /* Criteria Section */
+        .criteria-section {
+            margin: 4rem 0;
+        }
+
+        .criteria-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .criteria-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .criteria-card {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .criteria-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .criteria-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem -2rem -2rem;
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-gray);
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Values Section */
+        .values-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+            justify-content: center;
+        }
+
+        .value-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--white);
+            border-left: 5px solid var(--secondary);
+            padding: 2rem;
+            margin: 3rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .proposal-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Flag Animation */
+        .flag-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 40px;
+            opacity: 0.3;
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .disclaimer {
+            background: #fffbf0;
+            border: 1px solid #ffb81c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="flag-container">
+            <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="40" fill="#B22234"/>
+                <path d="M0,5 h60 M0,11 h60 M0,17 h60 M0,23 h60 M0,29 h60 M0,35 h60" stroke="white" stroke-width="3"/>
+                <rect width="24" height="20" fill="#3C3B6E"/>
+            </svg>
+        </div>
+        <div class="header-content">
+            <h1>Stallcup's List</h1>
+            <p class="subtitle">A Proposal for Merit-Based Immigration Recognition</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Proposal Section -->
+        <section class="proposal-section">
+            <p class="proposal-text">
+                Recently, President Trump expressed interest in identifying potential migrants who should be allowed to stay in the United States of America. What a beautiful olive branch to extend. President Trump is a merciful leader, even when some people disrespect our country by looting and burning our flag.
+            </p>
+            
+            <p class="proposal-text">
+                Our Commander In Chief understands that some migrants are actually family oriented, Jesus loving, honest workers who contribute to our farms, hospitality and industries. You know, the ones with no criminal records who love our country and believe in the American Dream.
+            </p>
+            
+            <p class="proposal-text">
+                May I respectfully suggest starting a <strong>STALLCUP'S LIST</strong> to help Trump identify the migrants in our country who deserve a chance. More than just workers on farms, in hotels and other service industry jobs... These are the people who contribute to our communities and respect our great beautiful country. They hold up the American Flag with all of their heart.
+            </p>
+            
+            <p class="proposal-text">
+                This list would not grant citizenship but offer immunity to those honest migrants who have earned their place here through sweat and integrity. It's not about opening the gates wide, it's about identifying the good migrants who love America.
+            </p>
+        </section>
+
+        <!-- Criteria Section -->
+        <section class="criteria-section">
+            <div class="criteria-header">
+                <h2>Qualifying Criteria</h2>
+                <p>Those who embody the American spirit through:</p>
+            </div>
+            
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <div class="criteria-icon">⚖️</div>
+                    <h3>Clean Record</h3>
+                    <p>No criminal history, demonstrating respect for our laws and institutions</p>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-icon">💼</div>
+                    <h3>Honest Work</h3>
+                    <p>Contributing to farms, hospitality, and essential industries across America</p>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Values</h3>
+                    <p>Family-oriented individuals who strengthen our communities</p>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-icon">🙏</div>
+                    <h3>Faith & Values</h3>
+                    <p>Sharing the moral foundation that built this great nation</p>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-icon">🇺🇸</div>
+                    <h3>Love for America</h3>
+                    <p>Respecting our flag and believing in the American Dream</p>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-icon">🤝</div>
+                    <h3>Community Contributors</h3>
+                    <p>Active participants who make our neighborhoods better</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Box -->
+        <div class="quote-box">
+            "We The People need to figure out a way to make this fair, focused, and practical. Living in California, nobody wants to close down the Southern Border more than me... I voted for President Trump to get fentanyl off our playgrounds and deport all the criminals, gang members, and drug dealers. But for the honest workers on farms, in hotels, or other human industries throughout our country, we need a patriotic system to recognize their contributions while maintaining strict standards in our country."
+        </div>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="value-item">
+                <div class="value-icon">🛡️</div>
+                <h4>Security First</h4>
+                <p>Protecting our borders while recognizing merit</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">⚡</div>
+                <h4>Swift & Fair</h4>
+                <p>Efficient process for those who qualify</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">📋</div>
+                <h4>Strict Standards</h4>
+                <p>Maintaining high criteria for selection</p>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            <strong>Important Note:</strong> This is a proposal for consideration. Any implementation would require proper legal framework and Congressional approval. This is about starting a conversation on merit-based recognition while maintaining border security.
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Join the Conversation</h2>
+        <p class="cta-text">
+            What do you think about getting this going to support the right kind of migrant contributions? Should a Last Chance be granted to some migrants?
+        </p>
+        <a href="#comment" class="cta-button">Share Your Thoughts</a>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add patriotic stars animation
+        function createStar() {
+            const star = document.createElement('div');
+            star.innerHTML = '⭐';
+            star.style.position = 'fixed';
+            star.style.top = '-50px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            star.style.fontSize = Math.random() * 20 + 10 + 'px';
+            star.style.opacity = '0.5';
+            star.style.pointerEvents = 'none';
+            star.style.animation = 'fall 10s linear';
+            star.style.zIndex = '-1';
+            
+            document.body.appendChild(star);
+            
+            setTimeout(() => star.remove(), 10000);
+        }
+
+        // CSS for falling animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(calc(100vh + 50px));
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create stars occasionally
+        setInterval(createStar, 3000);
+    </script>
+</body>
+</html>
